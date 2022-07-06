@@ -26,12 +26,14 @@ func (r Region) String() string {
 	return s
 }
 
-func (r Region) CheckDay(day time.Time) bool {
-	var result bool
+func (r Region) CheckDay(day time.Time) interface{} {
+	var result interface{}
+
+	result = false
 
 	for _, holiday := range r.Feiertage {
 		if holiday.Format("2006-01-02") == day.Format("2006-01-02") {
-			result = true
+			result = holiday.Text
 		}
 	}
 
