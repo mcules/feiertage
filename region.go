@@ -97,8 +97,11 @@ func BadenWürttemberg(y int, inklSonntage ...bool) Region {
 }
 
 // Bayern returns a Region object holding all public holidays in the state Bayern
-func Bayern(y int, inklSonntage ...bool) Region {
+func Bayern(y int, denomination bool, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Epiphanias, Fronleichnam, Allerheiligen}
+	if denomination {
+		ffun = append(ffun, MariäHimmelfahrt)
+	}
 	return Region{"Bayern", "BY", createFeiertagsList(y, "DE", ffun)}
 }
 
