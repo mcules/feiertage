@@ -91,22 +91,22 @@ func createFeiertagsList(y int, country string, ffun []func(int) Feiertag) []Fei
 
 // BadenWürttemberg returns a Region object holding all public holidays in the state
 // Baden-Württemberg
-func BadenWürttemberg(y int, inklSonntage ...bool) Region {
+func BadenWürttemberg(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Epiphanias, Fronleichnam, Allerheiligen}
 	return Region{"Baden-Württemberg", "BW", createFeiertagsList(y, "DE", ffun)}
 }
 
 // Bayern returns a Region object holding all public holidays in the state Bayern
-func Bayern(y int, denomination bool, inklSonntage ...bool) Region {
+func Bayern(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Epiphanias, Fronleichnam, Allerheiligen}
-	if denomination {
+	if religion == "rk" {
 		ffun = append(ffun, MariäHimmelfahrt)
 	}
 	return Region{"Bayern", "BY", createFeiertagsList(y, "DE", ffun)}
 }
 
 // Berlin returns a Region object holding all public holidays in the state Berlin
-func Berlin(y int, inklSonntage ...bool) Region {
+func Berlin(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 	if y >= 2019 {
 		ffun = append(ffun, InternationalerFrauentag)
@@ -120,7 +120,7 @@ func Berlin(y int, inklSonntage ...bool) Region {
 
 // Brandenburg returns a Region object holding all public holidays in the state
 // Brandenburg
-func Brandenburg(y int, inklSonntage ...bool) Region {
+func Brandenburg(y int, religion string, inklSonntage ...bool) Region {
 	var ffun []func(int) Feiertag
 	if len(inklSonntage) > 0 && inklSonntage[0] == false {
 		ffun = []func(int) Feiertag{Reformationstag}
@@ -131,7 +131,7 @@ func Brandenburg(y int, inklSonntage ...bool) Region {
 }
 
 // Bremen returns a Region object holding all public holidays in the state Bremen
-func Bremen(y int, inklSonntage ...bool) Region {
+func Bremen(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 	if y >= 2018 {
 		ffun = append(ffun, Reformationstag)
@@ -140,7 +140,7 @@ func Bremen(y int, inklSonntage ...bool) Region {
 }
 
 // Hamburg returns a Region object holding all public holidays in the state Hamburg
-func Hamburg(y int, inklSonntage ...bool) Region {
+func Hamburg(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 	if y >= 2018 {
 		ffun = append(ffun, Reformationstag)
@@ -149,21 +149,21 @@ func Hamburg(y int, inklSonntage ...bool) Region {
 }
 
 // Hessen returns a Region object holding all public holidays in the state Hessen
-func Hessen(y int, inklSonntage ...bool) Region {
+func Hessen(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Fronleichnam}
 	return Region{"Hessen", "HE", createFeiertagsList(y, "DE", ffun)}
 }
 
 // MecklenburgVorpommern returns a Region object holding all public holidays in
 // the state Mecklenburg-Vorpommern
-func MecklenburgVorpommern(y int, inklSonntage ...bool) Region {
+func MecklenburgVorpommern(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Reformationstag}
 	return Region{"Mecklenburg-Vorpommern", "MV", createFeiertagsList(y, "DE", ffun)}
 }
 
 // Niedersachsen returns a Region object holding all public holidays in the
 // state Niedersachsen
-func Niedersachsen(y int, inklSonntage ...bool) Region {
+func Niedersachsen(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 	if y >= 2018 {
 		ffun = append(ffun, Reformationstag)
@@ -173,38 +173,38 @@ func Niedersachsen(y int, inklSonntage ...bool) Region {
 
 // NordrheinWestfalen returns a Region object holding all public holidays in the
 // state Nordrhein-Westfalen
-func NordrheinWestfalen(y int, inklSonntage ...bool) Region {
+func NordrheinWestfalen(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Fronleichnam, Allerheiligen}
 	return Region{"Nordrhein-Westfalen", "NW", createFeiertagsList(y, "DE", ffun)}
 }
 
 // RheinlandPfalz returns a Region object holding all public holidays in the
 // state Rheinland-Pfalz
-func RheinlandPfalz(y int, inklSonntage ...bool) Region {
+func RheinlandPfalz(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Fronleichnam, Allerheiligen}
 	return Region{"Rheinland-Pfalz", "RP", createFeiertagsList(y, "DE", ffun)}
 }
 
 // Saarland returns a Region object holding all public holidays in the state Saarland
-func Saarland(y int, inklSonntage ...bool) Region {
+func Saarland(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Fronleichnam, MariäHimmelfahrt, Allerheiligen}
 	return Region{"Saarland", "SL", createFeiertagsList(y, "DE", ffun)}
 }
 
 // Sachsen returns a Region object holding all public holidays in the state Sachsen
-func Sachsen(y int, inklSonntage ...bool) Region {
+func Sachsen(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Reformationstag, BußUndBettag}
 	return Region{"Sachsen", "SN", createFeiertagsList(y, "DE", ffun)}
 }
 
 // SachsenAnhalt returns a Region object holding all public holidays in the state SachsenAnhalt
-func SachsenAnhalt(y int, inklSonntage ...bool) Region {
+func SachsenAnhalt(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Epiphanias, Reformationstag}
 	return Region{"Sachsen-Anhalt", "ST", createFeiertagsList(y, "DE", ffun)}
 }
 
 // SchleswigHolstein returns a Region object holding all public holidays in the state SchleswigHolstein
-func SchleswigHolstein(y int, inklSonntage ...bool) Region {
+func SchleswigHolstein(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 	if y >= 2018 {
 		ffun = append(ffun, Reformationstag)
@@ -213,7 +213,7 @@ func SchleswigHolstein(y int, inklSonntage ...bool) Region {
 }
 
 // Thüringen returns a Region object holding all public holidays in the state Thüringen
-func Thüringen(y int, inklSonntage ...bool) Region {
+func Thüringen(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{
 		Reformationstag}
 	if y >= 2019 {
@@ -223,75 +223,75 @@ func Thüringen(y int, inklSonntage ...bool) Region {
 }
 
 // Deutschland returns a Region object holding all public holidays that are Common in Germany
-func Deutschland(y int, inklSonntage ...bool) Region {
+func Deutschland(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 
 	return Region{"Deutschland", "DE", createFeiertagsList(y, "DE", ffun)}
 }
 
 // Burgenland returns a Region object holding all public holidays in the state of Burgenland.
-func Burgenland(y int, inklSonntage ...bool) Region {
+func Burgenland(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Martinstag}
 	return Region{"Burgenland", "Bgld", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Kärnten returns a Region object holding all public holidays in the state of Kärnten.
-func Kärnten(y int, inklSonntage ...bool) Region {
+func Kärnten(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Josefitag, TagDerVolksabstimmung}
 	return Region{"Kärnten", "Ktn", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Niederösterreich returns a Region object holding all public holidays in the state of Niederösterreich.
-func Niederösterreich(y int, inklSonntage ...bool) Region {
+func Niederösterreich(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Leopolditag}
 	return Region{"Niederösterreich", "NÖ", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Oberösterreich returns a Region object holding all public holidays in the state of Oberösterreich.
-func Oberösterreich(y int, inklSonntage ...bool) Region {
+func Oberösterreich(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Florianitag}
 	return Region{"Oberösterreich", "OÖ", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Salzburg returns a Region object holding all public holidays in the state of Salzburg.
-func Salzburg(y int, inklSonntage ...bool) Region {
+func Salzburg(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Rupertitag}
 	return Region{"Salzburg", "Sbg", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Steiermark returns a Region object holding all public holidays in the state of Steiermark.
-func Steiermark(y int, inklSonntage ...bool) Region {
+func Steiermark(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Josefitag}
 	return Region{"Steiermark", "Stmk", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Tirol returns a Region object holding all public holidays in the state of Tirol.
-func Tirol(y int, inklSonntage ...bool) Region {
+func Tirol(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Josefitag}
 	return Region{"Tirol", "T", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Vorarlberg returns a Region object holding all public holidays in the state of Vorarlberg.
-func Vorarlberg(y int, inklSonntage ...bool) Region {
+func Vorarlberg(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Josefitag}
 	return Region{"Vorarlberg", "Vbg", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Wien returns a Region object holding all public holidays in the city and state of Vienna.
-func Wien(y int, inklSonntage ...bool) Region {
+func Wien(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{Leopolditag}
 	return Region{"Wien", "W", createFeiertagsList(y, "AT", ffun)}
 }
 
 // Österreich returns a Region object holding all public holidays that are common in Austria.
-func Österreich(y int, inklSonntage ...bool) Region {
+func Österreich(y int, religion string, inklSonntage ...bool) Region {
 	ffun := []func(int) Feiertag{}
 	return Region{"Österreich", "AT", createFeiertagsList(y, "AT", ffun)}
 }
 
 // All returns a Region object holding all public holidays/feast days known to this program.
 // Not all of them are public holidays (basically 'work free' days).
-func All(y int, inklSonntage ...bool) Region {
+func All(y int, religion string, inklSonntage ...bool) Region {
 
 	/* ffun := []func(int) Feiertag{Neujahr, Epiphanias, HeiligeDreiKönige, Valentinstag,
 	InternationalerTagDesGedenkensAnDieOpferDesHolocaust, InternationalerFrauentag, Josefitag,
@@ -341,26 +341,26 @@ func All(y int, inklSonntage ...bool) Region {
 	return Region{"Alle", "All", feiertermine}
 }
 
-func regionFunctionListToRegionList(rfun []func(y int, inklSonntage ...bool) Region, year int, inklSonntage ...bool) []Region {
+func regionFunctionListToRegionList(rfun []func(y int, religion string, inklSonntage ...bool) Region, year int, religion string, inklSonntage ...bool) []Region {
 	regions := []Region{}
 	is := false
 	if len(inklSonntage) > 0 {
 		is = inklSonntage[0]
 	}
 	for _, r := range rfun {
-		regions = append(regions, r(year, is))
+		regions = append(regions, r(year, religion, is))
 	}
 	return regions
 }
 
 // GetAllRegions returns a list of all regions available. These may be filtered by providing the country ("de"|"at"|empty)
-func GetAllRegions(year int, inklSonntag bool, country ...string) (regions []Region) {
-	germanregions := regionFunctionListToRegionList([]func(y int, inklSonntage ...bool) Region{BadenWürttemberg, Bayern, Berlin,
+func GetAllRegions(year int, religion string, inklSonntag bool, country ...string) (regions []Region) {
+	germanregions := regionFunctionListToRegionList([]func(y int, religion string, inklSonntage ...bool) Region{BadenWürttemberg, Bayern, Berlin,
 		Brandenburg, Bremen, Hamburg, Hessen, MecklenburgVorpommern, Niedersachsen, NordrheinWestfalen,
-		RheinlandPfalz, Saarland, Sachsen, SachsenAnhalt, SchleswigHolstein, Thüringen, Deutschland}, year, inklSonntag)
+		RheinlandPfalz, Saarland, Sachsen, SachsenAnhalt, SchleswigHolstein, Thüringen, Deutschland}, year, religion, inklSonntag)
 
-	austrianregions := regionFunctionListToRegionList([]func(y int, inklSonntage ...bool) Region{Burgenland, Kärnten, Niederösterreich,
-		Oberösterreich, Salzburg, Steiermark, Tirol, Vorarlberg, Wien, Österreich}, year, inklSonntag)
+	austrianregions := regionFunctionListToRegionList([]func(y int, religion string, inklSonntage ...bool) Region{Burgenland, Kärnten, Niederösterreich,
+		Oberösterreich, Salzburg, Steiermark, Tirol, Vorarlberg, Wien, Österreich}, year, religion, inklSonntag)
 
 	if len(country) > 0 {
 		c := strings.ToLower(country[0])
@@ -370,7 +370,7 @@ func GetAllRegions(year int, inklSonntag bool, country ...string) (regions []Reg
 			regions = austrianregions
 		}
 	} else {
-		regions = append(append(germanregions, austrianregions...), All(year, inklSonntag))
+		regions = append(append(germanregions, austrianregions...), All(year, religion, inklSonntag))
 	}
 
 	return regions
