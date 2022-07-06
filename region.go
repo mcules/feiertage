@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"time"
 )
 
 // Region represents a Federal State of Germany or Austria (Bundesland). Some
@@ -23,6 +24,18 @@ func (r Region) String() string {
 		s = fmt.Sprintf("%s\n  %s", s, f)
 	}
 	return s
+}
+
+func (r Region) CheckDay(day time.Time) bool {
+	var result bool
+
+	for _, holiday := range r.Feiertage {
+		if holiday.Format("2006-01-02") == day.Format("2006-01-02") {
+			result = true
+		}
+	}
+
+	return result
 }
 
 func createCommonFeiertagsList(y int) []func(int) Feiertag {
